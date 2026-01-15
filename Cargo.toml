@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "rcc-proto",
+    "rcc-service",
+    "rcc-soap",
+    "rcc-wasm-game",
+    "rcc-client"
+]
+resolver = "2"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
