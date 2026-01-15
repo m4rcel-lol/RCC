@@ -1,0 +1,40 @@
+syntax = "proto3";
+package rcc;
+
+service Coordinator {
+    // Executor registers itself to the service
+    rpc RegisterExecutor (ExecutorInfo) returns (RegisterResponse);
+    
+    // Executor reports health and instance counts
+    rpc Heartbeat (ExecutorStatus) returns (HeartbeatAck);
+
+    // Coordinator assigns a WASM module to an executor
+    rpc AssignInstance (InstanceAssignment) returns (AssignmentResponse);
+}
+
+message ExecutorInfo {
+    string id = 1;
+    string address = 2;
+}
+
+message RegisterResponse {
+    bool success = 1;
+    string token = 2; // JWT for future requests
+}
+
+message ExecutorStatus {
+    string id = 1;
+    int32 active_instances = 2;
+    float cpu_load = 3;
+}
+
+message HeartbeatAck {}
+
+message InstanceAssignment {
+    string instance_id = 1;
+    bytes wasm_binary = 2;
+}
+
+message AssignmentResponse {
+    bool accepted = 1;
+}
