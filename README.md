@@ -1,5 +1,4 @@
 # 🔴 RCC: Rust Cloud Coordinator
-High-Performance, Sandboxed Cloud Gaming Infrastructure
 RCC is a complete, clean-room reimplementation of a cloud-orchestrated gaming system. Built from the ground up in Rust, it prioritizes security through WebAssembly (WASM) sandboxing, scalability via gRPC, and a modern 3D experience using the Bevy Engine.
 ## 🏗️ System Architecture
 The RCC ecosystem is composed of four primary pillars, designed to be modular and Linux-first:
